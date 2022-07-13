@@ -13,7 +13,7 @@ if (!empty($_POST['categ'] && $_POST['nome'] && $_POST['valor'] && $_POST['qnt']
     VALUE ('$categ','$nome','$valor','$qnt')";
 
     if (mysqli_query($conn, $sql_insert)) {
-        echo json_encode("cadastrado");
+        echo json_encode('cadastrado');
     } else {
         echo json_encode("404" . mysqli_error($conn));
     }
