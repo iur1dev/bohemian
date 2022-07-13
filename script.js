@@ -1,31 +1,55 @@
 // funcao de insert
 function teste() {
-  $("#att_sel").html("");
-
   let $nome = $("#nome").val();
   let $valor = $("#valor").val();
   let $qnt = $("#qnt").val();
   let $categ = $("#categ").val();
 
-  $.ajax({
-    url: "adicionar.php",
-    type: "POST",
-    data: {
-      nome: $nome,
-      valor: $valor,
-      qnt: $qnt,
-      categ: $categ,
-    },
-    dataType: "json",
-    success: function (result) {
-      alert(result);
-      $("#nome").val("");
-      $("#valor").val("");
-      $("#qnt").val("");
-      $("#categ").val("");
-      att();
-    },
-  });
+  if (
+    $("#nome").val() == "" ||
+    $("#valor").val() == "" ||
+    $("#qnt").val() == "" ||
+    $("#categ").val() == ""
+  ) {
+    $("#att_sel").html("");
+
+    att();
+
+    $("#receba").html("");
+    $("#receba").append(
+      `<div class="alert alert-light col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+      Preencha todos os campos !!! </div>`
+    );
+  } else {
+    $.ajax({
+      url: "adicionar.php",
+      type: "POST",
+      data: {
+        nome: $nome,
+        valor: $valor,
+        qnt: $qnt,
+        categ: $categ,
+      },
+      dataType: "json",
+      success: function (result) {
+        alert(result);
+        $("#att_sel").html("");
+
+        $("#nome").val("");
+        $("#valor").val("");
+        $("#qnt").val("");
+        $("#categ").val("");
+
+        att();
+
+        $("#receba").html("");
+        $("#receba").append(
+          `<div class="alert alert-primary col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+          Cadastrado !!! </div>`
+        );
+      },
+    });
+  }
 }
 // funcao de update
 function teste2() {
@@ -37,26 +61,60 @@ function teste2() {
   let $qnt = $("#qnt").val();
   let $categ = $("#categ").val();
 
-  $.ajax({
-    url: "atualizar.php",
-    type: "POST",
-    data: {
-      id: $id,
-      nome: $nome,
-      valor: $valor,
-      qnt: $qnt,
-      categ: $categ,
-    },
-    dataType: "json",
-    success: function (result) {
-      alert(result);
+  if (
+    $("#nome").val() == "" ||
+    $("#valor").val() == "" ||
+    $("#qnt").val() == "" ||
+    $("#categ").val() == ""
+  ) {
+    $("#att_sel").html("");
+
+    att();
+
+    $("#receba").html("");
+    $("#receba").append(
+      `<div class="alert alert-success col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+      Selecione algo para atualizar !!! </div>`
+    );
+  } else {
+    let $retorno = confirm("Tem certeza que quer alterar ???");
+    if ($retorno == true) {
+      $.ajax({
+        url: "atualizar.php",
+        type: "POST",
+        data: {
+          id: $id,
+          nome: $nome,
+          valor: $valor,
+          qnt: $qnt,
+          categ: $categ,
+        },
+        dataType: "json",
+        success: function (result) {
+          alert(result);
+          $("#nome").val("");
+          $("#valor").val("");
+          $("#qnt").val("");
+          $("#categ").val("");
+
+          att();
+
+          $("#receba").html("");
+          $("#receba").append(
+            `<div class="alert alert-success col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+          Atualizado !!! </div>`
+          );
+        },
+      });
+    } else {
+      att();
+
       $("#nome").val("");
       $("#valor").val("");
       $("#qnt").val("");
       $("#categ").val("");
-      att();
-    },
-  });
+    }
+  }
 }
 // funcao de delete
 function teste3() {
@@ -64,22 +122,56 @@ function teste3() {
 
   let $id = idUserSel;
 
-  $.ajax({
-    url: "deletar.php",
-    type: "POST",
-    data: {
-      id: $id,
-    },
-    dataType: "json",
-    success: function (result) {
-      alert(result);
+  if (
+    $("#nome").val() == "" ||
+    $("#valor").val() == "" ||
+    $("#qnt").val() == "" ||
+    $("#categ").val() == ""
+  ) {
+    $("#att_sel").html("");
+
+    att();
+
+    $("#receba").html("");
+    $("#receba").append(
+      `<div class="alert alert-danger col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+      Selecione algo para deletar !!! </div>`
+    );
+  } else {
+    let $retorno = confirm("Tem certeza que quer deletar ???");
+    if ($retorno == true) {
+      $.ajax({
+        url: "deletar.php",
+        type: "POST",
+        data: {
+          id: $id,
+        },
+        dataType: "json",
+        success: function (result) {
+          alert(result);
+          $("#nome").val("");
+          $("#valor").val("");
+          $("#qnt").val("");
+          $("#categ").val("");
+
+          att();
+
+          $("#receba").html("");
+          $("#receba").append(
+            `<div class="alert alert-danger col-6 col-md-2 text-center mx-auto mt-5" 
+          role="alert"> Deletado !!! </div>`
+          );
+        },
+      });
+    } else {
+      att();
+
       $("#nome").val("");
       $("#valor").val("");
       $("#qnt").val("");
       $("#categ").val("");
-      att();
-    },
-  });
+    }
+  }
 }
 // funcao de select
 function att() {

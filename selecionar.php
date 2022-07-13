@@ -5,7 +5,7 @@ include('conn.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM produtos WHERE produtos_id = '$id'";
+    $sql = "SELECT produtos_id, categoria_id, nome, REPLACE(preco, '.', ','), qnt FROM produtos WHERE produtos_id = '$id'";
 
     $result = mysqli_query($conn, $sql);
     $dados = $result->fetch_all();

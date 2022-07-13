@@ -1,7 +1,6 @@
 <!-- ( ͡° ͜ʖ ͡°) -->
 
 <?php
-
 include("conn.php");
 // select categoria
 $sql_categ = "SELECT * FROM categoria;";
@@ -57,12 +56,12 @@ $tabela_categ = mysqli_query($conn, $sql_categ);
                 </div>
                 <div class="row text-center mt-4">
                     <div class="col-lg-3"></div>
-                    <input class="btn btn-primary fw-bold col-3 col-lg-1 mx-auto" value="Cadastrar" onclick="teste()"></input>
-                    <input class="btn btn-success fw-bold col-3 col-lg-1 mx-auto" value="Atualizar" onclick="teste2()"></input>
-                    <input class="btn btn-danger fw-bold col-3 col-lg-1 mx-auto" value="Deletar" onclick="teste3()"></input>
+                    <button class="btn btn-primary fw-bold col-3 col-lg-1 mx-auto" onclick="teste()">Cadastrar</button>
+                    <button class="btn btn-success fw-bold col-3 col-lg-1 mx-auto" onclick="teste2()">Atualizar</button>
+                    <button class="btn btn-danger fw-bold col-3 col-lg-1 mx-auto" onclick="teste3()">Deletar</button>
                     <div class="col-lg-3"></div>
                 </div>
-                <div><?php echo $result ?></div>
+                <div id="receba"></div>
             </div>
             <table class="table text-light espaco1">
                 <thead>

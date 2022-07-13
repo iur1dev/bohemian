@@ -12,7 +12,7 @@ $sql_update = "UPDATE produtos SET categoria_id = '$categ', nome = '$nome', prec
 WHERE produtos_id = '$id'";
 
 if (mysqli_query($conn, $sql_update)) {
-    echo json_encode("atualizado");
+    echo json_encode("");
 } else {
     echo json_encode("404" . mysqli_error($conn));
 }
