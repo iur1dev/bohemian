@@ -1,4 +1,4 @@
-// funcao de adicionar em ajax
+// funcao de insert
 function teste() {
   $("#att_sel").html("");
 
@@ -27,8 +27,7 @@ function teste() {
     },
   });
 }
-
-// funcao de atualizar em ajax
+// funcao de update
 function teste2() {
   $("#att_sel").html("");
 
@@ -59,9 +58,7 @@ function teste2() {
     },
   });
 }
-
-// funcao de deletar em ajax
-
+// funcao de delete
 function teste3() {
   $("#att_sel").html("");
 
@@ -84,8 +81,7 @@ function teste3() {
     },
   });
 }
-
-// ajax para atualizar sem carregar
+// funcao de select
 function att() {
   $.ajax({
     url: "atualizar2.php",
@@ -112,8 +108,7 @@ function att() {
     },
   });
 }
-
-// ajax para selecionar
+// funcao de selecionar
 let idUserSel = 0;
 function Selecionar(id) {
   let iduser = id;
