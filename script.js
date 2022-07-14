@@ -32,7 +32,6 @@ function teste() {
       },
       dataType: "json",
       success: function (result) {
-        alert(result);
         $("#att_sel").html("");
 
         $("#nome").val("");
@@ -77,43 +76,34 @@ function teste2() {
       Selecione algo para atualizar !!! </div>`
     );
   } else {
-    let $retorno = confirm("Tem certeza que quer alterar ???");
-    if ($retorno == true) {
-      $.ajax({
-        url: "atualizar.php",
-        type: "POST",
-        data: {
-          id: $id,
-          nome: $nome,
-          valor: $valor,
-          qnt: $qnt,
-          categ: $categ,
-        },
-        dataType: "json",
-        success: function (result) {
-          alert(result);
-          $("#nome").val("");
-          $("#valor").val("");
-          $("#qnt").val("");
-          $("#categ").val("");
+    $.ajax({
+      url: "atualizar.php",
+      type: "POST",
+      data: {
+        id: $id,
+        nome: $nome,
+        valor: $valor,
+        qnt: $qnt,
+        categ: $categ,
+      },
+      dataType: "json",
+      success: function (result) {
+        $("#exampleModal").modal("hide");
 
-          att();
+        $("#nome").val("");
+        $("#valor").val("");
+        $("#qnt").val("");
+        $("#categ").val("");
 
-          $("#receba").html("");
-          $("#receba").append(
-            `<div class="alert alert-success col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
+        att();
+
+        $("#receba").html("");
+        $("#receba").append(
+          `<div class="alert alert-success col-6 col-md-2 text-center mx-auto mt-5" role="alert"> 
           Atualizado !!! </div>`
-          );
-        },
-      });
-    } else {
-      att();
-
-      $("#nome").val("");
-      $("#valor").val("");
-      $("#qnt").val("");
-      $("#categ").val("");
-    }
+        );
+      },
+    });
   }
 }
 // funcao de delete
@@ -138,39 +128,30 @@ function teste3() {
       Selecione algo para deletar !!! </div>`
     );
   } else {
-    let $retorno = confirm("Tem certeza que quer deletar ???");
-    if ($retorno == true) {
-      $.ajax({
-        url: "deletar.php",
-        type: "POST",
-        data: {
-          id: $id,
-        },
-        dataType: "json",
-        success: function (result) {
-          alert(result);
-          $("#nome").val("");
-          $("#valor").val("");
-          $("#qnt").val("");
-          $("#categ").val("");
+    $.ajax({
+      url: "deletar.php",
+      type: "POST",
+      data: {
+        id: $id,
+      },
+      dataType: "json",
+      success: function (result) {
+        $("#exampleModal1").modal("hide");
 
-          att();
+        $("#nome").val("");
+        $("#valor").val("");
+        $("#qnt").val("");
+        $("#categ").val("");
 
-          $("#receba").html("");
-          $("#receba").append(
-            `<div class="alert alert-danger col-6 col-md-2 text-center mx-auto mt-5" 
+        att();
+
+        $("#receba").html("");
+        $("#receba").append(
+          `<div class="alert alert-danger col-6 col-md-2 text-center mx-auto mt-5" 
           role="alert"> Deletado !!! </div>`
-          );
-        },
-      });
-    } else {
-      att();
-
-      $("#nome").val("");
-      $("#valor").val("");
-      $("#qnt").val("");
-      $("#categ").val("");
-    }
+        );
+      },
+    });
   }
 }
 // funcao de select
@@ -219,4 +200,10 @@ function Selecionar(id) {
     $("#categ").val(res[0][1]);
     idUserSel = res[0][0];
   });
+}
+function reset() {
+  $("#nome").val("");
+  $("#valor").val("");
+  $("#qnt").val("");
+  $("#categ").val("");
 }

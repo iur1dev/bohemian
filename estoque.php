@@ -57,13 +57,13 @@ $tabela_categ = mysqli_query($conn, $sql_categ);
                 <div class="row text-center mt-4">
                     <div class="col-lg-3"></div>
                     <button class="btn btn-primary fw-bold col-3 col-lg-1 mx-auto" onclick="teste()">Cadastrar</button>
-                    <button class="btn btn-success fw-bold col-3 col-lg-1 mx-auto" onclick="teste2()">Atualizar</button>
-                    <button class="btn btn-danger fw-bold col-3 col-lg-1 mx-auto" onclick="teste3()">Deletar</button>
+                    <button class="btn btn-success fw-bold col-3 col-lg-1 mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Atualizar</button>
+                    <button class="btn btn-danger fw-bold col-3 col-lg-1 mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Deletar</button>
                     <div class="col-lg-3"></div>
                 </div>
                 <div id="receba"></div>
             </div>
-            <table class="table text-light espaco1">
+            <table class="table text-light espaco1 table-hover table-dark">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>
@@ -76,6 +76,43 @@ $tabela_categ = mysqli_query($conn, $sql_categ);
             </table>
         </div>
     </main>
+
+    <!-- Modal atualizar -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atualizar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset()"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja mesmo atualizar ???
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="reset()">Sair</button>
+                    <button type="button" class="btn btn-success" onclick="teste2()">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal deletar -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deletar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset()"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja mesmo deletar ???
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="reset()">Sair</button>
+                    <button type="button" class="btn btn-danger" onclick="teste3()">Deletar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 

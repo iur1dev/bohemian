@@ -6,7 +6,6 @@ $categ = $_POST['categ'];
 $nome = $_POST['nome'];
 $valor = $_POST['valor'];
 $qnt = $_POST['qnt'];
-$result = '';
 
 $sql_insert = "INSERT INTO produtos(categoria_id,nome,preco,qnt) 
     VALUE ('$categ','$nome','$valor','$qnt')";
